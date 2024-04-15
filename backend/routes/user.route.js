@@ -9,7 +9,7 @@ router.get('/addMessage', userController.addMessages);
 
 
 
-router.post('/api/send-message', userController.sendMessage );
+// router.post('/api/send-message', userController.sendMessage );
 
 
 

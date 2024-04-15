@@ -21,14 +21,14 @@ const TestChat = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (message.trim() === '') return; // check if message is empty then do not send
-    socket.emit("user_message", message);
+    socket.emit("user-message", message);
     setSendMessages([...sendMessages, { textMessage: message, type: "outgoing" }]);
-    setmessage("")
+    setmessage('')
   }
 
   //here we are connecting soket 
   useEffect(() => {
-    socket.on('connect', () => {
+    socket.on('connect', () => { 
       console.log('socket connected', socket.id);
       // setSocketId(socket.id);
     })
@@ -45,10 +45,9 @@ const TestChat = () => {
     })
 
     socket.on("botMessage", (botMessage) => {
-      console.log("afer sending message", botMessage);
-      const incomingTextMessage = botMessage[0].textMessage;
-      console.log("incomingTextMessage", incomingTextMessage);
-      setSendMessages((data) => [...data, incomingTextMessage]);
+      const parseMessage = JSON.parse(botMessage);
+      console.log("after sending message", parseMessage);
+      setSendMessages((preMess) => [...preMess, parseMessage])
     })
   }, [socket])
 
@@ -75,12 +74,19 @@ const TestChat = () => {
             </div>
 
             <div className="body">
-
               {sendMessages.map((item, index) => (
                 <div className={`message ${item.sender}`} key={index}>
                   <div className="bubble lower">
                     {console.log("=====all Messages=====", item)}
-                    <p>{item ? item.textMessage : item}</p>
+                    <p>{item && item.textMessage}</p>
+                    <div>
+                      {item.options &&
+                        Object.keys(item.options).map((optionKey) => (
+                          <div key={optionKey}>
+                            <p >{item.options[optionKey]} </p>
+                          </div>
+                        ))}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -88,7 +94,7 @@ const TestChat = () => {
 
             <div className="foot">
               <form onSubmit={handleSubmit}>
-                <input type="text" className="msg" placeholder="Type a message..." onChange={(e) => setmessage(e.target.value)} />
+                <input type="text" className="msg" placeholder="Type a message..." value={message} onChange={(e) => setmessage(e.target.value)} />
                 <button type="submit"><SendIcon /></button>
               </form>
             </div>

@@ -8,8 +8,6 @@
 	font-size: 55px !important;
 }
 
-
-
 .chat_box input[type="text"],
 .chat_box button {
 	padding: 4px 8px;
@@ -61,30 +59,42 @@
 	border-radius: 50%;
 }
 
-
 /* body */
 .chat_box .body {
 	flex-grow: 1;
 	background-color: #eee;
 	height: 350px;
 	overflow: auto;
+	width: 370px;
 }
 
 .chat_box .body .bubble p {
 	display: inline-block;
 	padding: 10px;
-	margin-bottom: 5px;
+	margin-bottom: 0px;
 	border-radius: 15px;
+	background-color: #b2b2b2;
+
 }
 
 .chat_box .body .bubble p {
-	/* color: #f9fbff; */
 	font-size: 14px;
 	text-align: left;
-	line-height: 1.4;
+	line-height: 1;
+	margin-top: 2px;
 }
 
+.message {
+	display: flex;
+	justify-content: flex-end;
+	/* Align messages to the right by default */
+	/* background-color: #79c7c5; */
+}
 
+.message.chatbot {
+	justify-content: flex-start;
+	/* Align incoming messages to the left */
+}
 
 /* foot */
 .chat_box .foot {
@@ -95,51 +105,3 @@
 	flex-grow: 1;
 	width: 295px;
 }
-
-@keyframes bounce {
-	50% {
-		transform: translate(0, 5px);
-	}
-
-	100% {
-		transform: translate(0, 0);
-	}
-}
-
-.chat_box .ellipsis {
-	display: inline-block;
-	width: 5px;
-	height: 5px;
-	border-radius: 50%;
-	background-color: #b7b7b7;
-}
-
-.chat_box .dot_1 {
-	/* animation: name duration timing-function delay iteration-count */
-	animation: bounce 0.8s linear 0.1s infinite;
-}
-
-.chat_box .dot_2 {
-	animation: bounce 0.8s linear 0.2s infinite;
-}
-
-.chat_box .dot_3 {
-	animation: bounce 0.8s linear 0.3s infinite;
-}
-
-
-
-
-
-
-.message {
-	display: flex;
-	justify-content: flex-end; /* Align messages to the right by default */
-
-	/* background-color: #79c7c5; */
-	word-break: break-all;
-}
-  
-  .message.chatbot {
-	justify-content: flex-start; /* Align incoming messages to the left */
-  }
