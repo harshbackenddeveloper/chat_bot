@@ -1,0 +1,118 @@
+.mainParent {
+    padding: 10px;
+}
+
+.firstParent {
+    border: 2px solid rgb(209, 148, 91);
+    height: 92vh;
+    overflow: scroll;
+}
+
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+form.example button {
+    width: 20%;
+    padding: 10px;
+    background: green;
+    color: white;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+.userProfileTime h6 {
+    margin-bottom: 0px !important;
+}
+
+.timeParent {
+    width: 22px;
+    border-radius: 50%;
+    background-color: green;
+    color: white;
+}
+
+.cardParent {
+    border-bottom: 1px solid #ab9595;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* chat ui  */
+.ChatMainParent {
+    height: 92vh;
+    background-color: #f8f9fa;
+    border: 2px solid rgb(209, 148, 91);
+    overflow: scroll;
+}
+
+.ChatMainParent h5 {
+    border-radius: 50px;
+    text-align: center;
+    background-color: white;
+    width: 94px;
+    height: 35px;
+    margin: auto;
+    padding-top: 5px;
+}
+
+
+.chatParent {
+    padding: 20px;
+    height: 78vh;
+    overflow: scroll;
+}
+
+.chatParent h5 {
+    text-align: center;
+}
+
+.leftSideChat {
+    text-align: left;
+    display: flex;
+    justify-content: left;
+}
+
+.leftSideChatChild {
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.leftSideChat p {
+    margin-bottom: 0px;
+}
+
+.rightSideChat {
+    text-align: right;
+    display: flex;
+    justify-content: end;
+}
+
+.rightSideChatChild {
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(153, 128, 128);
+}
+
+
+.rightSideChat p {
+    margin-bottom: 0px;
+}
+
+.TypeMessage {
+    height: 55px;
+    background-color: #99d5ac;
+    padding-top: 11px;
+}
+
+.TypeMessage input {
+    width: 90%;
+}

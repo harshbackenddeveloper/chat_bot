@@ -1,0 +1,145 @@
+.RobotParent {
+	position: fixed;
+	bottom: 0;
+	right: 15px;
+}
+
+.RobotIcon {
+	font-size: 55px !important;
+}
+
+
+
+.chat_box input[type="text"],
+.chat_box button {
+	padding: 4px 8px;
+	border: 0;
+	outline: 0;
+}
+
+.chat_box button {
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.chat_box button:hover i {
+	color: #000;
+	transform: scale(1.2);
+}
+
+/* chat_box */
+.chat_box {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	border-radius: 10px 10px 0 0;
+}
+
+.chat_box>* {
+	padding: 16px;
+}
+
+/* head */
+.chat_box .head {
+	display: flex;
+	align-items: center;
+}
+
+.chat_box .head .user {
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
+}
+
+.chat_box .head .user .avatar {
+	margin-right: 8px;
+}
+
+.chat_box .head .user .avatar img {
+	display: block;
+	border-radius: 50%;
+}
+
+
+/* body */
+.chat_box .body {
+	flex-grow: 1;
+	background-color: #eee;
+	height: 350px;
+	overflow: auto;
+}
+
+.chat_box .body .bubble p {
+	display: inline-block;
+	padding: 10px;
+	margin-bottom: 5px;
+	border-radius: 15px;
+}
+
+.chat_box .body .bubble p {
+	/* color: #f9fbff; */
+	font-size: 14px;
+	text-align: left;
+	line-height: 1.4;
+}
+
+
+
+/* foot */
+.chat_box .foot {
+	display: flex;
+}
+
+.chat_box .foot .msg {
+	flex-grow: 1;
+	width: 295px;
+}
+
+@keyframes bounce {
+	50% {
+		transform: translate(0, 5px);
+	}
+
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+.chat_box .ellipsis {
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: #b7b7b7;
+}
+
+.chat_box .dot_1 {
+	/* animation: name duration timing-function delay iteration-count */
+	animation: bounce 0.8s linear 0.1s infinite;
+}
+
+.chat_box .dot_2 {
+	animation: bounce 0.8s linear 0.2s infinite;
+}
+
+.chat_box .dot_3 {
+	animation: bounce 0.8s linear 0.3s infinite;
+}
+
+
+
+
+
+
+.message {
+	display: flex;
+	justify-content: flex-end; /* Align messages to the right by default */
+
+	/* background-color: #79c7c5; */
+	word-break: break-all;
+}
+  
+  .message.chatbot {
+	justify-content: flex-start; /* Align incoming messages to the left */
+  }
