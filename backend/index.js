@@ -8,7 +8,7 @@ require("./config/config.json");
 require('dotenv');
 const cors = require('cors');
 const userRouter = require("./routes/user.route");
-const { getmessage,getMatches,registerMail,aboutUs } = require('./controller/user.controller');
+const { getmessage, getMatches, registerMail, aboutUs } = require('./controller/user.controller');
 app.use(express.static(path.resolve('./public')));
 
 const io = new Server(http, { cors: { origin: "*", } });
@@ -37,20 +37,15 @@ app.use("/", userRouter);
 io.on('connection', (socket) => {
     console.log('A user connected', socket.id);
     const data = {
-        textMessage: 'Welcome! How can I assist you? , Please choose one of the below options',
+        textMessage: 'Hello , Please enter your full name',
         sender: 'chatbot',
-        options: {
-            option1: `1. Find Matches`,
-            option2: `2. Register Your Email`,
-            option3: `3. About Us`
-        }
     }
     socket.emit('chat message', JSON.stringify(data));
     socket.on('user-message', async (message) => {
         console.log(1212, message);
         let response;
         if (message === '1') {
-            
+
             const response = await getMatches();
             socket.emit('botMessage', JSON.stringify(response));
         } else if (message === '2') {

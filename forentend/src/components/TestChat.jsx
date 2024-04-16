@@ -9,10 +9,8 @@ const TestChat = () => {
   const socket = useMemo(() => io("http://localhost:9000"), []);
   const [open, setOpen] = useState(false);
   const [message, setmessage] = useState('')
-  const [sendMessages, setSendMessages] = useState([])
-
-  // const [socketId, setSocketId] = useState('')
-  const [defaultMessage, setDefaultMessage] = useState([])
+  const [socketId, setSocketId] = useState('')
+  const [allMessages, setAllMessages] = useState([])
 
   const handleToggle = () => {
     setOpen(!open);
@@ -22,42 +20,36 @@ const TestChat = () => {
     e.preventDefault();
     if (message.trim() === '') return; // check if message is empty then do not send
     socket.emit("user-message", message);
-    setSendMessages([...sendMessages, { textMessage: message, type: "outgoing" }]);
+    setAllMessages([...allMessages, { textMessage: message, type: "outgoing" }]);
     setmessage('')
   }
 
   //here we are connecting soket 
   useEffect(() => {
-    socket.on('connect', () => { 
+    socket.on('connect', () => {
       console.log('socket connected', socket.id);
-      // setSocketId(socket.id);
+      setSocketId(socket.id);
     })
 
     socket.on("chat message", (data) => {
-
       const parseData = JSON.parse(data)
       console.log("Welcome message from backend", parseData);
-
-      setSendMessages((preMess) => [...preMess, parseData])
-      if (data === "Welcome! How can I assist you?") {
-        setSendMessages((data) => [...data, parseData]);
-      }
+      setAllMessages((data) => [...data, parseData])
     })
 
     socket.on("botMessage", (botMessage) => {
       const parseMessage = JSON.parse(botMessage);
       console.log("after sending message", parseMessage);
-      setSendMessages((preMess) => [...preMess, parseMessage])
+      setAllMessages((data) => [...data, parseMessage])
     })
   }, [socket])
 
-  console.log("sendMessages", sendMessages);
+  console.log("allMessages", allMessages);
 
   return (
     <>
       <div className='RobotParent'>
         {!open && <ChatIcon onClick={handleToggle} className='RobotIcon' />}
-
         {open && (
           <div className="chat_box">
             <div className="head">
@@ -65,7 +57,7 @@ const TestChat = () => {
                 <div className="avatar">
                   <img src="https://picsum.photos/g/40/40" />
                 </div>
-                <div className="name">Kai Cheng</div>
+                <div className="name">Helper-Bot</div>
               </div>
 
               <div>
@@ -74,19 +66,19 @@ const TestChat = () => {
             </div>
 
             <div className="body">
-              {sendMessages.map((item, index) => (
+              {allMessages.map((item, index) => (
                 <div className={`message ${item.sender}`} key={index}>
-                  <div className="bubble lower">
+                  <div className="bubble">
                     {console.log("=====all Messages=====", item)}
                     <p>{item && item.textMessage}</p>
-                    <div>
+                    {/* <div>
                       {item.options &&
                         Object.keys(item.options).map((optionKey) => (
                           <div key={optionKey}>
                             <p >{item.options[optionKey]} </p>
                           </div>
                         ))}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))}

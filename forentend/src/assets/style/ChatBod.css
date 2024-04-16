@@ -20,11 +20,6 @@
 	cursor: pointer;
 }
 
-.chat_box button:hover i {
-	color: #000;
-	transform: scale(1.2);
-}
-
 /* chat_box */
 .chat_box {
 	display: flex;
@@ -67,33 +62,33 @@
 	overflow: auto;
 	width: 370px;
 }
-
+.chat_box .body .bubble{
+	display: flex;
+	justify-content: end;
+}
 .chat_box .body .bubble p {
 	display: inline-block;
 	padding: 10px;
 	margin-bottom: 0px;
 	border-radius: 15px;
 	background-color: #b2b2b2;
-
-}
-
-.chat_box .body .bubble p {
 	font-size: 14px;
 	text-align: left;
 	line-height: 1;
 	margin-top: 2px;
+	/* width: auto; */
 }
 
 .message {
+	/* Align messages to the right by default */
 	display: flex;
 	justify-content: flex-end;
-	/* Align messages to the right by default */
-	/* background-color: #79c7c5; */
+	
 }
 
 .message.chatbot {
-	justify-content: flex-start;
 	/* Align incoming   to the left */
+	justify-content: flex-start;
 }
 
 /* foot */

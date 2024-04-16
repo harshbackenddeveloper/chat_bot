@@ -37,7 +37,8 @@ const Home = () => {
         try {
             //fetch login user from localstorage 
             const localStorageData = localStorage.getItem("LoginUserId")
-            const allDataLoginUser = await makeApi('get', `/seprateDetails/${localStorageData}`);
+            const afterParse = JSON.parse(localStorageData)
+            const allDataLoginUser = await makeApi('get', `/seprateDetails/${afterParse}`);
             setLoginUserData(allDataLoginUser)
             setSenderId(allDataLoginUser._id)
 

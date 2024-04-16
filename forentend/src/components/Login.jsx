@@ -28,7 +28,7 @@ const Login = () => {
             const userLogin = await makeApi('post', "/UserLogin", userData)
             console.log("userLogin", userLogin);
             alert('user login successfully')
-            localStorage.setItem('LoginUserId', userLogin.data._id)
+            localStorage.setItem('LoginUserId', JSON.stringify(userLogin.data._id))
             if (userLogin.data._id) {
                 navigate('/')
             }
