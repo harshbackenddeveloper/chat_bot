@@ -2,10 +2,10 @@ import axios from "axios";
 
 export const makeApi = async (req, url, body) => {
 
-    
-    const getToken = localStorage.getItem(JSON.parse('Usertoken'))
+    const userToken = localStorage.getItem('UserToken');
+    const getToken = JSON.parse(userToken)
 
-    const previousUrl = "http://localhost:3020"
+    const previousUrl = "http://localhost:9000"
     var config = {
         method: req,
         url: previousUrl + url,

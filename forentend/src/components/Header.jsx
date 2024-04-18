@@ -6,9 +6,9 @@ const Header = () => {
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
-                        Navbar
-                    </a>
+                    <Link className="navbar-brand" to="/">
+                        Chat
+                    </Link>
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -37,7 +37,7 @@ const Header = () => {
 
 
                         </ul>
-                        <form className="d-flex" role="search">
+                        {/* <form className="d-flex" role="search">
                             <input
                                 className="form-control me-2"
                                 type="search"
@@ -47,7 +47,7 @@ const Header = () => {
                             <button className="btn btn-outline-success" type="submit">
                                 Search
                             </button>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
             </nav>
